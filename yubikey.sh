@@ -50,6 +50,6 @@ if [ -z "$SUDO_AUTH_LINE" ]; then
 	fi		
 fi
 
-echo 'SUBSYSTEMS=="usb", ACTION=="remove", ATTRS{idVendor}=="1050", ATTRS{idProduct}=="0407", RUN+="/bin/loginctl lock-sessions"'|sudo tee /etc/udev/rules.d/00-yubikey-lock.rules
+echo 'SUBSYSTEMS=="usb", ACTION=="remove", ENV{PRODUCT}=="1050/407/543", RUN+="/bin/loginctl lock-sessions"'|sudo tee /etc/udev/rules.d/00-yubikey-lock.rules
 
 sudo udevadm control --reload
